@@ -1,4 +1,4 @@
-package com.example.sabnewsletter.dashboard
+package com.auth.oschmidauthjwt.dashboard
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
@@ -7,12 +7,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
-import com.example.sabnewsletter.repository.AuthenticationRepository
-import android.util.Log
+import com.auth.oschmidauthjwt.repository.AuthenticationRepository
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.sabnewsletter.repository.CheckRepository
-import com.example.sabnewsletter.splash.SplashViewModel
-import com.example.sabnewsletter.splash.SplashViewModelFactory
+import com.auth.oschmidauthjwt.dashboard.DashboardViewModel
+import com.auth.oschmidauthjwt.dashboard.DashboardViewModelFactory
+import com.auth.oschmidauthjwt.repository.CheckRepository
 
 @Composable
 fun DashboardView(context: Context, navController: NavController,viewModel: DashboardViewModel = viewModel(

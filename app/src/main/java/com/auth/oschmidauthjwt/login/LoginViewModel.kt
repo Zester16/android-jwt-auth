@@ -1,10 +1,10 @@
-package com.example.sabnewsletter.login
+package com.auth.oschmidauthjwt.login
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.sabnewsletter.network.SabencosAuthentication
-import com.example.sabnewsletter.network.UserLoginRequest
-import com.example.sabnewsletter.sharedprefrence.UserAuthSharedPrefrence
+import com.auth.oschmidauthjwt.network.SabencosAuthentication
+import com.auth.oschmidauthjwt.network.UserLoginRequest
+import com.auth.oschmidauthjwt.sharedprefrence.UserAuthSharedPrefrence
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

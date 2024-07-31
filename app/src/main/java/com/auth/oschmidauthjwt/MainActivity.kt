@@ -1,6 +1,6 @@
 
 
-package com.example.sabnewsletter
+package com.auth.oschmidauthjwt
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.example.sabnewsletter.navigation.NavGraph
-import com.example.sabnewsletter.ui.theme.SabNewsLetterTheme
+import com.auth.oschmidauthjwt.navigation.NavGraph
+import com.auth.oschmidauthjwt.ui.theme.SabNewsLetterTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

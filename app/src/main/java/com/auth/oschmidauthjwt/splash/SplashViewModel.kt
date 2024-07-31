@@ -1,10 +1,10 @@
-package com.example.sabnewsletter.splash
+package com.auth.oschmidauthjwt.splash
 
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.example.sabnewsletter.repository.AuthenticationRepository
+import com.auth.oschmidauthjwt.repository.AuthenticationRepository
 
 class SplashViewModel(authenticationRepository: AuthenticationRepository):ViewModel() {
 

@@ -1,4 +1,4 @@
-package com.example.sabnewsletter.sharedprefrence
+package com.auth.oschmidauthjwt.sharedprefrence
 
 import android.content.Context
 import android.content.SharedPreferences

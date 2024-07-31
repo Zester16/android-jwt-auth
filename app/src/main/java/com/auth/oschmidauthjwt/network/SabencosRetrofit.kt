@@ -1,4 +1,4 @@
-package com.example.sabnewsletter.network
+package com.auth.oschmidauthjwt.network
 
 import com.google.gson.annotations.SerializedName
 import retrofit2.Retrofit

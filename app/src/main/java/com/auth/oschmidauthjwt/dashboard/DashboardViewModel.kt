@@ -1,10 +1,10 @@
-package com.example.sabnewsletter.dashboard
+package com.auth.oschmidauthjwt.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.example.sabnewsletter.repository.AuthenticationRepository
-import com.example.sabnewsletter.repository.CheckRepository
+import com.auth.oschmidauthjwt.repository.AuthenticationRepository
+import com.auth.oschmidauthjwt.repository.CheckRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

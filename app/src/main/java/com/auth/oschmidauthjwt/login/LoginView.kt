@@ -1,4 +1,4 @@
-package com.example.sabnewsletter.login
+package com.auth.oschmidauthjwt.login
 
 
 
@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import com.example.sabnewsletter.navigation.NavigationConstant
+import com.auth.oschmidauthjwt.navigation.NavigationConstant
 
 @Composable
 fun LoginView(navController: NavController,viewModel:LoginViewModel=LoginViewModel(LocalContext.current)){

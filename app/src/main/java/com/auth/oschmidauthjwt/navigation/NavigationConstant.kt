@@ -1,4 +1,4 @@
-package com.example.sabnewsletter.navigation
+package com.auth.oschmidauthjwt.navigation
 
 object NavigationConstant {
 const val LOGIN="/login"

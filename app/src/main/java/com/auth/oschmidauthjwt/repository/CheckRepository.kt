@@ -1,8 +1,8 @@
-package com.example.sabnewsletter.repository
+package com.auth.oschmidauthjwt.repository
 
 import android.content.Context
 import androidx.navigation.NavController
-import com.example.sabnewsletter.network.SabencosAuthentication
+import com.auth.oschmidauthjwt.network.SabencosAuthentication
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sabnewsletter"
+    namespace = "com.auth.oschmidauthjwt"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.sabnewsletter"
+        applicationId = "com.auth.oschmidauthjwt"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
