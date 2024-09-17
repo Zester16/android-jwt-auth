@@ -25,8 +25,10 @@ class CheckRepository(private val context: Context, private val navController: N
                 return@withContext true
             }
             catch(exception:Exception){
-                authRepository.checkAuthErrorAndTakeAction(exception)
-
+                val response =authRepository.checkAuthErrorAndTakeAction(exception)
+                if(response){
+                    return@withContext getToken()
+                }
                 return@withContext null
             }
 

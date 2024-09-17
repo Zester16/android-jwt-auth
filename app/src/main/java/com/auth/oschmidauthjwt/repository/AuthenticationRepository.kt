@@ -8,8 +8,10 @@ import com.auth.oschmidauthjwt.navigation.NavigationConstant
 import com.auth.oschmidauthjwt.network.SabencosAuthentication
 import com.auth.oschmidauthjwt.sharedprefrence.UserAuthSharedPrefrence
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -69,23 +71,26 @@ class AuthenticationRepository(private val context:Context,private val navContro
         }
     }
     private suspend fun getRefreshToken():AuthDatasource{
-        try {
-            val authToken=userAuthSharedPrefrence.getTokenAuth()!!
-            val headers=mapOf("Authorization" to authToken)
-            val response=sabencosAuthentication.authenticationApi.refreshToken(headers).await()
-            Log.v("AuthenticationRepository","got refresh token")
-            userAuthSharedPrefrence.setTokenRefresh(response.ref)
-            return AuthDatasource()
+        return withContext(Dispatchers.IO){
+            try {
+                val authToken=userAuthSharedPrefrence.getTokenAuth()!!
+                val headers=mapOf("Authorization" to authToken)
+                val response=sabencosAuthentication.authenticationApi.refreshToken(headers).await()
+                Log.v("AuthenticationRepository","got refresh token")
+                userAuthSharedPrefrence.setTokenRefresh(response.ref)
+                return@withContext AuthDatasource()
 
-        }
-        catch(exception:Exception){
-            Log.v("refresh-tk-exception",exception.toString())
-            if(exception.message.toString() == "HTTP 401 Unauthorized"){
-                //logOutUser()
-                return AuthDatasource(authError = true)
             }
-            return AuthDatasource(normalError = true)
+            catch(exception:Exception){
+                Log.v("refresh-tk-exception",exception.toString())
+                if(exception.message.toString() == "HTTP 401 Unauthorized"){
+                    //logOutUser()
+                    return@withContext AuthDatasource(authError = true)
+                }
+                return@withContext AuthDatasource(normalError = true)
+            }
         }
+
     }
     fun getAuthHeaders(refresh:Boolean):Map<String,String>{
          var token:String
@@ -125,19 +130,21 @@ class AuthenticationRepository(private val context:Context,private val navContro
      * the logical action from return type is taken by function
      *
      * */
-    fun checkAuthErrorAndTakeAction(exception:Exception){
-        coroutineScope.launch(){
+    suspend fun checkAuthErrorAndTakeAction(exception:Exception):Boolean{
+        //coroutineScope.launch(){
             Log.v("AuthenticationRep:CAEATA",exception.message.toString())
             if(exception.message.toString() == "HTTP 401 Unauthorized"){
-                val response =getRefreshToken()
+               val response =getRefreshToken()
+                //val response=getRefreshTokenAsync()
                 Log.v("AuthenticationRep:CAEATA","r3efresh done"+response.toString())
 
                 if(response.authError==true){
                 logOutUser()
                  }
-            }
+                return true
 
         }
+        return false
     }
     private suspend fun checkTokenStatus():AuthDatasource{
             return withContext(Dispatchers.IO){
@@ -154,5 +161,4 @@ class AuthenticationRepository(private val context:Context,private val navContro
 
 
         }
-
     }

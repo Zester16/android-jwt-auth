@@ -25,12 +25,8 @@ class DashboardViewModel(private val checkRepository: CheckRepository):ViewModel
 
     fun checkToken(){
         coroutineJob.launch {
-            checkRepository.getToken()
+            checkRepository.getToken()}
         }
-
-    }
-
-
 }
 class DashboardViewModelFactory(private val checkRepository: CheckRepository) :
     ViewModelProvider.NewInstanceFactory() {
